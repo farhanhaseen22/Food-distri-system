@@ -1,0 +1,26 @@
+<!-- Basic HTML with form and map placeholder -->
+<html>
+<head>
+  <title>Community Food Map</title>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+  <form method="post" action="/search">
+    <input type="text" name="query" placeholder="e.g., Non-perishable food near Rabbittown">
+    <button type="submit">Search</button>
+  </form>
+
+  <div id="map" style="width: 600px; height: 400px;"></div>
+  <script>
+    mapboxgl.accessToken = '{{ MAPBOX_TOKEN }}';
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: [{{ map_coords.lon }}, {{ map_coords.lat }}],
+      zoom: 13
+    });
+    new mapboxgl.Marker().setLngLat([{{ map_coords.lon }}, {{ map_coords.lat }}]).addTo(map);
+  </script>
+</body>
+</html>
