@@ -1,0 +1,135 @@
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyByt6UOFBo4l6M6--Q7OTQ-IOC4lR5eEVo&libraries=geometry&callback=initMap" async defer></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodFinder NL - Your AI Food Security Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>🍎 FoodFinder NL</h1>
+        <p>AI-Powered Food Security Assistant for Newfoundland and Labrador</p>
+        
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">247</div>
+                <div class="stat-label">Food Resources</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">52</div>
+                <div class="stat-label">Communities Served</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1,843</div>
+                <div class="stat-label">People Helped</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="map-section">
+            <div class="map-controls">
+                <h2>🗺️ Food Resources Near You</h2>
+                <div class="search-controls">
+                    <input type="text" id="locationSearch" placeholder="Enter your location (e.g., St. John's, NL)" class="location-search-input">
+                    <button onclick="searchLocation()" class="search-btn">🔍 Search</button>
+                    <select id="resourceFilter" onchange="filterResources()" class="filter-select">
+                        <option value="all">All Resources</option>
+                        <option value="food-bank">Food Banks</option>
+                        <option value="community-fridge">Community Fridges</option>
+                        <option value="soup-kitchen">Soup Kitchens</option>
+                        <option value="emergency">Emergency Services</option>
+                    </select>
+                    <button class="toggle-btn" id="legendToggle">
+                        <span>Legend</span>
+                        <svg class="chevron" id="chevronIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Legend Component (positioned above map) -->
+                <div class="legend-container" id="legendContainer">
+                    <h2>Legend:-</h2>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                           <span class="legend-icon" style="background: #ff4757;">🏪</span>
+                            Food Banks
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-icon" style="background: #2ed573;">❄️</span>
+                            Community Fridges
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-icon" style="background: #ffa502;">🍽️</span>
+                            Soup Kitchens
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-icon" style="background: #3742fa;">🚨</span>
+                            Emergency Services
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div id="map" style="height: 500px; width: 100%; border-radius: 10px;"></div>
+            
+            <div class="map-info">
+
+                <div class="quick-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="visibleResources">12</span>
+                        <span class="stat-label">Resources Shown</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="nearestDistance">0.3 km</span>
+                        <span class="stat-label">Nearest</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-section">
+            <div class="chat-header">
+                <h3>🤖 AI Food Assistant</h3>
+                <p>Ask me anything about food help in NL!</p>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ai-message">
+                    👋 Hi! I'm your AI food security assistant for Newfoundland and Labrador. I can help you find:
+                    <br>• Food banks and pantries
+                    <br>• Community fridges and gardens  
+                    <br>• Free meal programs
+                    <br>• Affordable grocery options
+                    <br>• Emergency food assistance
+                    <br><br>How can I help you today?
+                </div>
+            </div>
+
+            <div class="quick-buttons">
+                <button class="quick-btn" onclick="sendQuickMessage('Where are the nearest food banks?')">🏪 Find Food Banks</button>
+                <button class="quick-btn" onclick="sendQuickMessage('Free meals today?')">🍽️ Free Meals</button>
+                <button class="quick-btn" onclick="sendQuickMessage('Community fridges near me?')">❄️ Community Fridges</button>
+                <button class="quick-btn" onclick="sendQuickMessage('Emergency food help?')">🚨 Emergency Help</button>
+            </div>
+
+            <div class="typing-indicator" id="typingIndicator">
+                AI is thinking<div class="typing-dots"><span></span><span></span><span></span></div>
+            </div>
+
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Ask about food resources in NL..." onkeypress="handleKeyPress(event)">
+                <button class="send-btn" onclick="sendMessage()" id="sendBtn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
