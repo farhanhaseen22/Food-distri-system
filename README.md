@@ -1,6 +1,10 @@
-# FoodFinder-NL
+# Food_n_Us
 
-**FoodFinder-NL** is a Python-based project designed for the Hackathon - NL Eats. Its goal is to help users discover and explore food options in the Netherlands efficiently.
+This repo also has the file "joystick_RasPi4.py" - Joystick movement reading script.
+
+# Food_n_Us
+
+**Food_n_Us** is a Python-based project designed for the Hackathon - NL Eats. Its goal is to help users discover and explore food options in the Netherlands efficiently.
 
 ## Features
 
