@@ -1,10 +1,11 @@
-# Food_n_Us
-
-This repo also has the file "joystick_RasPi4.py" - Joystick movement reading script.
 
 # Food_n_Us
 
 **Food_n_Us** is a Python-based project designed for the Hackathon - NL Eats. Its goal is to help users discover and explore food options in the Netherlands efficiently.
+
+# Future Potentialities
+
+This repo also has the file "joystick_RasPi4.py" - Joystick movement reading script. Furthermore, it has the csv file "california_foodbanks". There are plans to integrate thtese in the near future. Except for the joystick file tho, I keepin that for funsies.
 
 ## Features
 
